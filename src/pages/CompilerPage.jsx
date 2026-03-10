@@ -56,22 +56,22 @@ const CompilerPage = () => {
     };
 
     return (
-        <div className="h-screen flex flex-col bg-darker overflow-hidden">
+        <div className="min-h-screen xl:h-screen flex flex-col bg-darker overflow-x-hidden xl:overflow-hidden">
             <HeaderBar />
 
-            <div className="flex-1 flex flex-col p-4 gap-4 h-[calc(100vh-73px)]">
+            <div className="flex-1 flex flex-col p-3 md:p-4 gap-4 xl:h-[calc(100vh-73px)] overflow-y-auto xl:overflow-hidden">
                 {/* Top Area: Prompt Box & Run Button */}
-                <div className="flex items-start gap-4">
+                <div className="flex flex-col lg:flex-row items-stretch lg:items-start gap-4 shrink-0">
                     <div className="flex-1">
                         <PromptBox onGenerate={handleGenerate} isGenerating={isGenerating} />
                     </div>
-                    <div className="pt-2">
+                    <div className="pt-0 lg:pt-2">
                         <button
                             onClick={handleRun}
                             disabled={isCompiling || isGenerating}
-                            className="bg-green-600 hover:bg-green-500 disabled:bg-gray-700 disabled:text-gray-400 text-white px-8 py-3 rounded-lg font-bold shadow-lg shadow-green-900/20 transition-all flex items-center gap-2 transform active:scale-95"
+                            className="w-full lg:w-auto bg-green-600 hover:bg-green-500 disabled:bg-gray-700 disabled:text-gray-400 text-white px-8 py-3 rounded-lg font-bold shadow-lg shadow-green-900/20 transition-all flex items-center justify-center gap-2 transform active:scale-95"
                         >
-                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <svg className="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
                             </svg>
                             Run Code
@@ -80,18 +80,18 @@ const CompilerPage = () => {
                 </div>
 
                 {/* Main Workspace Area */}
-                <div className="flex-1 flex gap-4 min-h-0">
+                <div className="flex-1 flex flex-col xl:flex-row gap-4 min-h-0 pb-4 xl:pb-0">
                     {/* Left Column: Editor */}
-                    <div className="flex-1 h-full shadow-2xl relative">
+                    <div className="flex-1 min-h-[400px] xl:min-h-0 h-full shadow-2xl relative">
                         <CodeEditor code={code} setCode={setCode} />
                     </div>
 
                     {/* Right Column: Input/Output */}
-                    <div className="w-[400px] xl:w-[500px] flex flex-col gap-4 h-full">
-                        <div className="flex-1 rounded-xl overflow-hidden border border-gray-800 shadow-xl bg-panel">
+                    <div className="w-full xl:w-[400px] 2xl:w-[500px] flex flex-col gap-4 h-[600px] xl:h-full shrink-0">
+                        <div className="flex-1 rounded-xl overflow-hidden border border-gray-800 shadow-xl bg-panel min-h-[250px] xl:min-h-0">
                             <InputConsole input={input} setInput={setInput} />
                         </div>
-                        <div className="flex-1 rounded-xl overflow-hidden border border-gray-800 shadow-xl bg-panel">
+                        <div className="flex-1 rounded-xl overflow-hidden border border-gray-800 shadow-xl bg-panel min-h-[250px] xl:min-h-0">
                             <OutputConsole output={output} error={error} isCompiling={isCompiling} />
                         </div>
                     </div>

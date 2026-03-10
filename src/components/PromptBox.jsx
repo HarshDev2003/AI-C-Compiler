@@ -17,20 +17,20 @@ const PromptBox = ({ onGenerate, isGenerating }) => {
                 </svg>
                 AI Code Generator
             </h2>
-            <div className="flex gap-3">
+            <div className="flex flex-col sm:flex-row gap-3">
                 <input
                     type="text"
                     value={prompt}
                     onChange={(e) => setPrompt(e.target.value)}
                     placeholder="E.g., Write a C program to reverse an array..."
-                    className="flex-1 bg-dark text-gray-200 border border-gray-700 rounded-lg px-4 py-2.5 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-sm"
+                    className="flex-1 w-full bg-dark text-gray-200 border border-gray-700 rounded-lg px-4 py-2.5 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-sm"
                     onKeyDown={(e) => e.key === 'Enter' && handleGenerate()}
                     disabled={isGenerating}
                 />
                 <button
                     onClick={handleGenerate}
                     disabled={isGenerating || !prompt.trim()}
-                    className="bg-primary hover:bg-blue-600 disabled:bg-gray-700 disabled:text-gray-400 text-white px-6 py-2.5 rounded-lg font-medium text-sm transition-colors flex items-center gap-2"
+                    className="w-full sm:w-auto bg-primary hover:bg-blue-600 disabled:bg-gray-700 disabled:text-gray-400 text-white px-6 py-2.5 rounded-lg font-medium text-sm transition-colors flex items-center justify-center gap-2"
                 >
                     {isGenerating ? (
                         <>
